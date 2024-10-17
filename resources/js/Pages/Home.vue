@@ -1,17 +1,13 @@
 <script setup>
-jika ingin menggunakan spesifik menu nya / tampilan layoutnya
-// import Layout from '../Layouts/Layout.vue'
-// import demo from '../Layouts/demo.vue'
-// defineOptions({
-//     layout: demo
-// })
+import { Head } from '@inertiajs/vue3'
 </script>
 
 
 <template>
-    <!-- <Layout> -->
-        <h1 class="text-3xl font-bold underline">
-            Hello world!
-        </h1>
-    <!-- </Layout> -->
+
+    <Head title=" |Home" />
+        <!-- <meta head-key="description" name="description" content="This is my home"> -->
+    <h1 class="text-3xl font-bold underline">
+        Hello world!
+    </h1>
 </template>
