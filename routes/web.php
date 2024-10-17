@@ -19,3 +19,7 @@ Route::get('/profile', function () {
 
 // or
 Route::inertia('/profile1', 'UserProfile', ['user' => "burhan"] );
+
+Route::get('/tes', function () {
+    return Inertia::render('Layouts');
+});
