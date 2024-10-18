@@ -6,12 +6,12 @@ use Inertia\Inertia;
 Route::get('/', function () {
     // sleep(2);
     return Inertia::render('Home');
-});
+})->name('home');
 
 Route::get('/about', function () {
     // sleep(2);
     return Inertia::render('About');
-});
+})->name('about');
 
 Route::get('/profile', function () {
     // sleep(2);
@@ -19,11 +19,9 @@ Route::get('/profile', function () {
     return Inertia::render('UserProfile', [
         'user' => "asep"
     ]);
-});
+})->name('profile');
 
 // or
-Route::inertia('/profile1', 'UserProfile', ['user' => "burhan"] );
+Route::inertia('/profile1', 'UserProfile', ['user' => "burhan"] )->name('profile1');
 
-Route::get('/tes', function () {
-    return Inertia::render('Layouts');
-});
+

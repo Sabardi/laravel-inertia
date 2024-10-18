@@ -1,5 +1,6 @@
 <script setup>
 import { Link, Head } from '@inertiajs/vue3'
+import { route } from '../../../vendor/tightenco/ziggy/src/js';
 </script>
 
 <template>
@@ -17,9 +18,9 @@ import { Link, Head } from '@inertiajs/vue3'
                 {{ $page.props.auth.user }}
 
                 <div class="space-x-6">
-                    <Link href="/">Home</Link>
-                    <Link href="/about">About</Link>
-                    <Link href="/profile">Profile</Link>
+                    <Link :href="route('home')">Home</Link>
+                    <Link :href="route('about')">About</Link>
+                    <Link :href="route('profile1')">Profile</Link>
                 </div>
             </nav>
         </header>

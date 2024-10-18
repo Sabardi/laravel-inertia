@@ -1,3 +1,4 @@
-materi progress indikator
+https://github.com/tighten/ziggy.git
 
-https://inertiajs.com/progress-indicators#default
+dont forget 
+doing  composer dump-autoload
