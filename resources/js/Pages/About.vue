@@ -3,6 +3,6 @@ import { Head } from '@inertiajs/vue3'
 </script>
 
 <template>
-    <Head title=" |About" />
+    <Head :title=" `| ${$page.component}`" />
     <p>ini about </p>
 </template>

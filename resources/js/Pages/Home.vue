@@ -5,9 +5,9 @@ import { Head } from '@inertiajs/vue3'
 
 <template>
 
-    <Head title=" |Home" />
+    <Head :title=" `| ${$page.component}`" />
         <!-- <meta head-key="description" name="description" content="This is my home"> -->
     <h1 class="text-3xl font-bold underline">
-        Hello world!
+  {{ $page.props.user }}
     </h1>
 </template>
