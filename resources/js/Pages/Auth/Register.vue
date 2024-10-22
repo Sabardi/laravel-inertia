@@ -11,7 +11,9 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route('register'))
+    form.post(route('register'), {
+        onError: () => form.reset("password", "password_confirmation")
+    })
 }
 </script>
 <template>
@@ -28,7 +30,7 @@ const submit = () => {
                 :message="form.errors.password_confirmation" />
             <div class="">
                 <p class="mb-2 text-slate-600">Already a user
-                    <a href="#" class="text-link">Login</a>
+                    <a :href="route('login')" class="text-link">Login</a>
                 </p>
 
                 <button class="primary-btn" :disabled="form.processing">Register</button>

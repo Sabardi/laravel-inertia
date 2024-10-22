@@ -13,9 +13,9 @@ class AuthController extends Controller
     {
         sleep(1);
         $request->validate([
-            'name' => ['required','string', 'max:255'],
-            'email' => ['required','string','email','max:255','unique:users'],
-            'password' => ['required','string','min:8','confirmed'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         // return "pass";
         // Create the user
@@ -26,6 +26,23 @@ class AuthController extends Controller
         return redirect()->route('home')->with('success', 'Registration successful.');
     }
 
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/')->with('success', 'You are logged in.');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->withInput($request->only('email'));
+    }
 }
-
-
