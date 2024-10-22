@@ -1,6 +1,7 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3';
 import { route } from '../../../../vendor/tightenco/ziggy/src/js';
+import TextInput from '../components/TextInput.vue';
 
 const form = useForm({
     name: null,
@@ -9,9 +10,8 @@ const form = useForm({
     password_confirmation: null
 });
 
-const submit = () =>
-{
-   form.post(route('register'))
+const submit = () => {
+    form.post(route('register'))
 }
 </script>
 <template>
@@ -21,32 +21,15 @@ const submit = () =>
     <h1 class="title">Register Acount</h1>
     <div class="w-2/4 mx-auto">
         <form @submit.prevent="submit">
-            <div class="mb-6">
-                <label for="name">Name</label>
-                <input type="text" v-model="form.name">
-                <small>{{ form.errors.name }}</small>
-            </div>
-            <div class="mb-6">
-                <label for="email">Email</label>
-                <input type="email" v-model="form.email">
-                <small>{{ form.errors.email }}</small>
-
-            </div>
-            <div class="mb-6">
-                <label for="password">Password</label>
-                <input type="password" v-model="form.password">
-                <small>{{ form.errors.password }}</small>
-            </div>
-            <div class="mb-6">
-                <label for="name">Confirm Password</label>
-                <input type="password" v-model="form.password_confirmation">
-                <small>{{ form.errors.password }}</small>
-            </div>
-
+            <TextInput name="name" type="text" v-model="form.name" :message="form.errors.name" />
+            <TextInput name="email" type="email" v-model="form.email" :message="form.errors.email" />
+            <TextInput name="password" v-model="form.password" type="password" :message="form.errors.password" />
+            <TextInput name="password_confirmation" type="password" v-model="form.password_confirmation"
+                :message="form.errors.password_confirmation" />
             <div class="">
                 <p class="mb-2 text-slate-600">Already a user
                     <a href="#" class="text-link">Login</a>
-            </p>
+                </p>
 
                 <button class="primary-btn" :disabled="form.processing">Register</button>
             </div>
