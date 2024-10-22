@@ -13,14 +13,14 @@ import { route } from '../../../vendor/tightenco/ziggy/src/js';
         <meta head-key="description" name="description" content="default description">
     </Head>
     <div>
-        <header class="text-white bg-red-700">
-            <nav class="flex items-center justify-between max-w-screen-lg p-4 mx-auto">
-                {{ $page.props.auth.user }}
+        <header>
+            <nav>
+                <div class="space-x-6">
+                    <Link :href="route('home')" class="nav-link">Home</Link>
+                </div>
 
                 <div class="space-x-6">
-                    <Link :href="route('home')">Home</Link>
-                    <Link :href="route('about')">About</Link>
-                    <Link :href="route('profile1')">Profile</Link>
+                    <Link :href="route('register')" class="nav-link">Register</Link>
                 </div>
             </nav>
         </header>
