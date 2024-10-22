@@ -25,7 +25,7 @@ createInertiaApp({
 
     progress: {
         // The color of the progress bar...
-        color: '#4B5563',
+        color: 'red',
 
         // Whether to include the default NProgress styles...
         includeCSS: true,

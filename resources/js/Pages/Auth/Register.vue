@@ -1,8 +1,8 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
-import { reactive } from 'vue';
+import { Head, useForm } from '@inertiajs/vue3';
+import { route } from '../../../../vendor/tightenco/ziggy/src/js';
 
-const form = reactive({
+const form = useForm({
     name: null,
     email: null,
     password: null,
@@ -11,7 +11,7 @@ const form = reactive({
 
 const submit = () =>
 {
-    console.log(form);
+   form.post(route('register'))
 }
 </script>
 <template>
@@ -24,26 +24,31 @@ const submit = () =>
             <div class="mb-6">
                 <label for="name">Name</label>
                 <input type="text" v-model="form.name">
+                <small>{{ form.errors.name }}</small>
             </div>
             <div class="mb-6">
                 <label for="email">Email</label>
                 <input type="email" v-model="form.email">
+                <small>{{ form.errors.email }}</small>
+
             </div>
             <div class="mb-6">
                 <label for="password">Password</label>
                 <input type="password" v-model="form.password">
+                <small>{{ form.errors.password }}</small>
             </div>
             <div class="mb-6">
                 <label for="name">Confirm Password</label>
                 <input type="password" v-model="form.password_confirmation">
+                <small>{{ form.errors.password }}</small>
             </div>
 
             <div class="">
                 <p class="mb-2 text-slate-600">Already a user
                     <a href="#" class="text-link">Login</a>
-                </p>
+            </p>
 
-                <button class="primary-btn">Register</button>
+                <button class="primary-btn" :disabled="form.processing">Register</button>
             </div>
         </form>
     </div>
